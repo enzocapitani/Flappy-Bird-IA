@@ -1,8 +1,8 @@
-package principal;
+package principal.logic;
 
 import java.awt.Graphics2D;
 
-import objects.Bird;
+import objects.bird.Bird;
 
 public class GameLogic {
 

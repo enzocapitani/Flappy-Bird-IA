@@ -3,7 +3,7 @@ package input;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import objects.Bird;
+import objects.bird.Bird;
 
 public class BirdKeyListener implements KeyListener {
 

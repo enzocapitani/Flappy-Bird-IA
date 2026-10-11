@@ -8,8 +8,8 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import input.BirdKeyListener;
-import objects.Bird;
-import principal.GameLogic;
+import objects.bird.Bird;
+import principal.logic.GameLogic;
 
 public class DefaultMap extends JPanel implements Runnable {
 

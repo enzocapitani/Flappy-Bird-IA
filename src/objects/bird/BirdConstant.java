@@ -1,4 +1,4 @@
-package objects.constants;
+package objects.bird;
 
 public class BirdConstant {
 	

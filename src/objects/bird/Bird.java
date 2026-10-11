@@ -1,10 +1,8 @@
-package objects;
+package objects.bird;
 
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-
-import objects.constants.BirdConstant;
 
 public class Bird {
 	
