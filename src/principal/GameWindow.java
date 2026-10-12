@@ -13,9 +13,11 @@ public class GameWindow {
 	}
 	
 	public void showWindow(JPanel panel) {
+		System.out.println(GameConstants.WIDHT);
+		System.out.println(GameConstants.HEIGHT);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.frame.add(panel);
-		this.frame.pack();
+		this.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
 		this.frame.setLocationRelativeTo(null);
 		this.frame.setVisible(true);
 		
