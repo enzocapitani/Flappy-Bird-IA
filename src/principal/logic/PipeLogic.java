@@ -13,7 +13,7 @@ public class PipeLogic {
 
     public PipeLogic(){
         this.pipes = new ArrayList<>();
-        this.spacing = 250;
+        this.spacing = Pipe.SPACING;
         generatePipes();
     }
 
@@ -24,7 +24,7 @@ public class PipeLogic {
     }
 
     private void verifyPosition(Pipe pipe){
-        if (pipe.getX() < -PipeConstant.SIZE_X) {
+        if (pipe.getX() < -Pipe.SIZE_X) {
             pipe.setX(mostFar() + spacing);
             System.out.println("Mudou");
         }
