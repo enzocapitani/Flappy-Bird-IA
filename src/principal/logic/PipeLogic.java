@@ -26,7 +26,6 @@ public class PipeLogic {
     private void verifyPosition(Pipe pipe){
         if (pipe.getX() < -Pipe.SIZE_X) {
             pipe.setX(mostFar() + spacing);
-            System.out.println("Mudou");
         }
     }
 

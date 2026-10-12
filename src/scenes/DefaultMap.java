@@ -24,7 +24,6 @@ public class DefaultMap extends JPanel implements Runnable {
 		gamelogic = new GameLogic();
 		
 		this.setBackground(Color.BLACK);
-		this.setPreferredSize(new Dimension(900, 600));
 		this.setFocusable(true);
 		this.addKeyListener(new BirdKeyListener(gamelogic.getBird()));
 		

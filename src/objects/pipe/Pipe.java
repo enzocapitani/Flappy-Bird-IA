@@ -57,6 +57,38 @@ public class Pipe implements ObjectInterface {
         g2.fillRect(x, yB, sizeX, sizeY);
     }
 
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getSizeX() {
+        return sizeX;
+    }
+
+    public void setSizeX(int sizeX) {
+        this.sizeX = sizeX;
+    }
+
+    public int getSizeY() {
+        return sizeY;
+    }
+
+    public void setSizeY(int sizeY) {
+        this.sizeY = sizeY;
+    }
+
+    public int getyB() {
+        return yB;
+    }
+
+    public void setyB(int yB) {
+        this.yB = yB;
+    }
+
     public int getX() {
         return x;
     }

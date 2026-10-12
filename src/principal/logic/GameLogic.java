@@ -3,7 +3,6 @@ package principal.logic;
 import java.awt.Graphics2D;
 
 import objects.bird.Bird;
-import objects.pipe.Pipe;
 
 public class GameLogic {
 
