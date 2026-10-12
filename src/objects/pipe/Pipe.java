@@ -5,8 +5,23 @@ import java.awt.Graphics2D;
 import java.util.Random;
 
 import objects.ObjectInterface;
+import principal.GameConstants;
 
 public class Pipe implements ObjectInterface {
+
+    public static final Random RAND = new Random();
+
+    public static final int SIZE_X = 50;
+
+    public static final double SIZE_Y = GameConstants.HEIGHT * 0.7;
+
+    public static final double GAP = GameConstants.HEIGHT * 0.21;
+
+    public static final int VELOCITY = 3;
+    
+    public static final double BORDER_DISTANCE = GameConstants.HEIGHT * 0.04;
+    
+    public static final int SPACING = (int)(GameConstants.WIDHT * 0.3);
 
     private int x, y, sizeX, sizeY,
 				vel;
@@ -14,16 +29,16 @@ public class Pipe implements ObjectInterface {
     
     public Pipe(int x){
         
-        this.gap = PipeConstant.GAP;
-        this.sizeX = PipeConstant.SIZE_X;
-        this.sizeY = PipeConstant.SIZE_Y;
+        this.gap = (int)Pipe.GAP;
+        this.sizeX = Pipe.SIZE_X;
+        this.sizeY = (int)Pipe.SIZE_Y;
 
-        this.y = PipeConstant.RAND.nextInt(175, 600);;
+        this.y = Pipe.RAND.nextInt(gap+(int)Pipe.BORDER_DISTANCE, GameConstants.HEIGHT - gap - (int)Pipe.BORDER_DISTANCE);;
 		this.x = x;
 
         this.yB = y - gap - sizeY;
 
-		this.vel = PipeConstant.VELOCITY;
+		this.vel = Pipe.VELOCITY;
     }
 
     public void move(){

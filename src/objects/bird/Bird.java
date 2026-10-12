@@ -4,23 +4,35 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 
 import objects.ObjectInterface;
+import principal.GameConstants;
 
 public class Bird implements ObjectInterface{
 	
+	public static final int GRAVITY_FORCE = 1;
+
+	public static final int JUMP_FORCE = -20;
+
+	public static final double SIZE = GameConstants.HEIGHT * 0.04;
+
+	public static final int INITIAL_X = (int)(GameConstants.WIDHT * 0.25);
+
+	public static final int INITIAL_Y = (int)(GameConstants.HEIGHT * 0.4);
+
 	private int x, y, size,
 				vel;
 	
 	public Bird() {
- 		this.x = 150;
-		this.y = 300;
-		this.size = BirdConstant.SIZE;
+ 		this.x = Bird.INITIAL_X;
+		this.y = Bird.INITIAL_Y;
+		this.size = (int) Bird.SIZE;
+		System.out.println(size);
 		this.vel = -10;
 	}
 	
 	@Override 
 	public void update() {
 		
-		this.vel += BirdConstant.GRAVITY_FORCE;
+		this.vel += Bird.GRAVITY_FORCE;
 		
 		if(vel > 30) vel = 30;
 		
@@ -28,7 +40,7 @@ public class Bird implements ObjectInterface{
 	}
 	
 	public void jump() {
-		this.vel = BirdConstant.JUMP_FORCE;  
+		this.vel = Bird.JUMP_FORCE;  
 	}
 	
 	@Override 
