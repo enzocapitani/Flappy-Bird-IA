@@ -120,6 +120,12 @@ public class Bird implements ObjectInterface{
 		this.alive = alive;
 	}
 
+	public int getX() {
+		return x;
+	}
 
+	public void setX(int x) {
+		this.x = x;
+	}
 
 }
