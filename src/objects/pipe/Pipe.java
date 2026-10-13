@@ -21,7 +21,7 @@ public class Pipe implements ObjectInterface {
     
     public static final double BORDER_DISTANCE = GameConstants.HEIGHT * 0.04;
     
-    public static final int SPACING = (int)(GameConstants.WIDHT * 0.3);
+    public static final int SPACING = (int)(GameConstants.WIDHT * 0.3) + SIZE_X;
 
     private int x, y, sizeX, sizeY,
 				vel;

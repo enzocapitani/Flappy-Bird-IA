@@ -15,7 +15,7 @@ public class GameLogic {
 	}
 	
 	public void update() {
-		this.bird.update();
+		this.bird.update(pipeLogic.mostCloseToBird(this.bird));
 		this.pipeLogic.update();
 	}
 	

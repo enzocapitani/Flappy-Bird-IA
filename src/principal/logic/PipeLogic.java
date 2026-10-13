@@ -1,5 +1,6 @@
 package principal.logic;
 
+import objects.bird.Bird;
 import objects.pipe.*;
 
 import java.awt.Graphics2D;
@@ -23,7 +24,7 @@ public class PipeLogic {
         }
     }
 
-    private void verifyPosition(Pipe pipe){
+    private void setNewPosition(Pipe pipe){
         if (pipe.getX() < -Pipe.SIZE_X) {
             pipe.setX(mostFar() + spacing);
         }
@@ -39,9 +40,30 @@ public class PipeLogic {
         return dist;
     }
 
+    public Pipe mostCloseToBird(Bird bird){
+        Pipe bestPipe = null;
+        int bestDistance = Integer.MAX_VALUE;
+        
+        for(int i = 0; i < pipes.size(); i++){
+            int distance = distance(bird, pipes.get(i));
+            
+            if(distance > -Pipe.SIZE_X/2 && distance < bestDistance){
+                bestDistance = distance;
+                bestPipe = pipes.get(i);
+            }
+
+        }
+
+        return bestPipe;
+    }
+
+    private int distance(Bird bird, Pipe pipe){
+        return pipe.getX() - bird.getX();
+    }
+
     public void update(){
         for (int i = 0; i < pipes.size(); i++) {
-            verifyPosition(pipes.get(i)); 
+            setNewPosition(pipes.get(i)); 
             pipes.get(i).update();
         }
     }

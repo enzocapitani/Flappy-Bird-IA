@@ -86,6 +86,10 @@ public class Bird implements ObjectInterface{
 
 	@Override 
 	public void update() {
+	
+	}
+
+	public void update(Pipe pipe) {
 		if(isAlive()){
 			this.vel += Bird.GRAVITY_FORCE;
 			
@@ -94,6 +98,7 @@ public class Bird implements ObjectInterface{
 			this.y += vel/2;
 
 			borderCollision();
+			pipeCollision(pipe);
 		}
 	}
 	
