@@ -51,13 +51,14 @@ public class Bird implements ObjectInterface{
 
 	public void die(){
 		this.alive = false;
+		System.out.println("Morto");
 	}
 
 	// ====================== EXTERIOR INTERACTION ======================
 
 	public void borderCollision(){
 		if(this.y <= 0 ||
-			this.y + this.size > GameConstants.HEIGHT
+			this.y + this.size >= GameConstants.HEIGHT
 		){
 			die();
 		}
