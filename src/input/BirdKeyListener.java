@@ -21,8 +21,8 @@ public class BirdKeyListener implements KeyListener {
 
 	@Override
 	public void keyPressed(KeyEvent e) {
-		
-		this.bird.jump();
+		if(e.getKeyCode() == KeyEvent.VK_SPACE)
+			this.bird.jump();
 		
 	}
 
