@@ -3,5 +3,6 @@
 
 .vscode
 .settings
+.idea
 
 bin/*
