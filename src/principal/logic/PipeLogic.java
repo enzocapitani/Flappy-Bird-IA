@@ -2,6 +2,7 @@ package principal.logic;
 
 import objects.bird.Bird;
 import objects.pipe.*;
+import principal.GameConstants;
 
 import java.awt.Graphics2D;
 import java.util.ArrayList;
@@ -21,6 +22,12 @@ public class PipeLogic {
     private void generatePipes(){
         for (int i = 0; i < 10; i++) {
             this.pipes.add(new Pipe(900 + i * spacing));
+        }
+    }
+
+    public void resetPipes(){
+        for (int i = 0; i < pipes.size(); i++) {
+            this.pipes.get(i).realocate(GameConstants.WIDHT + i * Pipe.SPACING);
         }
     }
 

@@ -17,6 +17,12 @@ public class GameLogic {
 	public void update() {
 		this.bird.update(pipeLogic.mostCloseToBird(this.bird));
 		this.pipeLogic.update();
+
+		if(!this.bird.isAlive()){
+			pipeLogic.resetPipes();
+			this.bird.resetBird();
+		}
+
 	}
 	
 	public void paint(Graphics2D g2) {

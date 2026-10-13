@@ -21,7 +21,7 @@ public class Bird implements ObjectInterface{
 
 	public static final int INITIAL_Y = (int)(GameConstants.HEIGHT * 0.4);
 
-	public static final int INITIAL_VELOCITY = 10;
+	public static final int INITIAL_VELOCITY = -10;
 
 	// ====================== VARIABLES ====================== 
 
@@ -38,7 +38,7 @@ public class Bird implements ObjectInterface{
 		this.alive = true;
 		this.size = Bird.SIZE;
 		System.out.println(size);
-		this.vel = -10;
+		this.vel = INITIAL_VELOCITY;
 	}
 	
 	
@@ -52,6 +52,10 @@ public class Bird implements ObjectInterface{
 	public void die(){
 		this.alive = false;
 		System.out.println("Morto");
+	}
+
+	public void revive(){
+		this.alive = true;
 	}
 
 	// ====================== EXTERIOR INTERACTION ======================
@@ -87,6 +91,12 @@ public class Bird implements ObjectInterface{
 	@Override 
 	public void update() {
 	
+	}
+
+	public void resetBird(){
+		revive();
+		this.y = Bird.INITIAL_Y;
+		this.vel = INITIAL_VELOCITY;
 	}
 
 	public void update(Pipe pipe) {
