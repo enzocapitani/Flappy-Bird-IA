@@ -1,17 +1,16 @@
 package scenes;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
+import java.awt.*;
 
 import javax.swing.JPanel;
 
 import input.BirdKeyListener;
-import objects.bird.Bird;
 import principal.logic.GameLogic;
+import principal.utils.LoadFile;
 
 public class DefaultMap extends JPanel implements Runnable {
+
+	private Font scoreFont;
 
 	private final int FPS = 60;
 	private final Thread gameThread;
@@ -22,6 +21,8 @@ public class DefaultMap extends JPanel implements Runnable {
 		super();
 		
 		gamelogic = new GameLogic();
+
+		this.scoreFont = LoadFile.loadFont("resources/font/YellowBanana.otf");
 		
 		this.setBackground(Color.BLACK);
 		this.setFocusable(true);
@@ -60,8 +61,17 @@ public class DefaultMap extends JPanel implements Runnable {
 		super.paintComponent(g);
 		
 		Graphics2D g2 = (Graphics2D) g;
-		
 		gamelogic.paint(g2);
+		drawScore(g2);
+
+	}
+
+	public void drawScore(Graphics2D g2){
+		Graphics2D g2b = (Graphics2D) g2.create();
+		g2b.setColor(Color.YELLOW);
+		g2b.setFont(scoreFont);
+		g2b.drawString("Score: 0", 100, 100);
+		g2b.dispose();
 	}
 	
 }
