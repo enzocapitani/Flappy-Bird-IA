@@ -45,6 +45,12 @@ public class Pipe implements ObjectInterface {
         this.x -= vel;
     }
 
+    public void realocate(int x){
+        this.y = Pipe.RAND.nextInt(gap+(int)Pipe.BORDER_DISTANCE, GameConstants.HEIGHT - gap - (int)Pipe.BORDER_DISTANCE);;
+        this.x = x;
+        this.yB = y - gap - sizeY;
+    }
+
     @Override
     public void update() {
         move();

@@ -26,7 +26,7 @@ public class PipeLogic {
 
     private void setNewPosition(Pipe pipe){
         if (pipe.getX() < -Pipe.SIZE_X) {
-            pipe.setX(mostFar() + spacing);
+            pipe.realocate(mostFar() + Pipe.SPACING);
         }
     }
 
