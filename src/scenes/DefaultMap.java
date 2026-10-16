@@ -70,7 +70,7 @@ public class DefaultMap extends JPanel implements Runnable {
 		Graphics2D g2b = (Graphics2D) g2.create();
 		g2b.setColor(Color.YELLOW);
 		g2b.setFont(scoreFont);
-		g2b.drawString("Score: 0", 100, 100);
+		g2b.drawString("Score: "+gamelogic.score, 100, 100);
 		g2b.dispose();
 	}
 	

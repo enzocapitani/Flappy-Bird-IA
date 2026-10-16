@@ -23,10 +23,12 @@ public class Bird implements ObjectInterface{
 
 	public static final int INITIAL_VELOCITY = -10;
 
-	// ====================== VARIABLES ====================== 
+	// ====================== VARIABLES ======================
+
+	private Pipe actualPipe;
 
 	private int x, y, size,
-				vel;
+				vel, score;
 
 	private boolean alive;
 
@@ -37,12 +39,12 @@ public class Bird implements ObjectInterface{
 		this.y = Bird.INITIAL_Y;
 		this.alive = true;
 		this.size = Bird.SIZE;
-		System.out.println(size);
 		this.vel = INITIAL_VELOCITY;
+		this.score = 0;
+
+		this.actualPipe = null;
 	}
-	
-	
-	
+
 	// ======================== ACTIONS ========================
 
 	public void jump() {
@@ -51,7 +53,6 @@ public class Bird implements ObjectInterface{
 
 	public void die(){
 		this.alive = false;
-		System.out.println("Morto");
 	}
 
 	public void revive(){
@@ -69,6 +70,13 @@ public class Bird implements ObjectInterface{
 	}
 
 	public void pipeCollision(Pipe pipe){
+		if(this.actualPipe == null){
+			actualPipe = pipe;
+		} else {
+			updateScore(pipe);
+			actualPipe = pipe;
+		}
+
 		int xp = pipe.getX(),
 			yp1 = pipe.getY(), 
 			yp2 = pipe.getyB(), 
@@ -83,14 +91,19 @@ public class Bird implements ObjectInterface{
 		if(overlapsX && (overlapsY1 || overlapsY2)){
 			die();
 		}
-
 	}
 
 	// ====================== UPDATE VIEW & ATTRIBUTES ====================== 
 
 	@Override 
 	public void update() {
-	
+
+	}
+
+	private void updateScore(Pipe newPipe){
+		if(newPipe != actualPipe){
+			score++;
+		}
 	}
 
 	public void resetBird(){
@@ -131,16 +144,16 @@ public class Bird implements ObjectInterface{
 		return alive;
 	}
 
-	public void setAlive(boolean alive) {
-		this.alive = alive;
-	}
-
 	public int getX() {
 		return x;
 	}
 
 	public void setX(int x) {
 		this.x = x;
+	}
+
+	public int getScore() {
+		return score;
 	}
 
 }

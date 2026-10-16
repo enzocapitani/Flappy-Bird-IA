@@ -8,15 +8,19 @@ public class GameLogic {
 
 	private Bird bird;
 	private PipeLogic pipeLogic;
+
+	public int score;
 	
 	public GameLogic() {
 		bird = new Bird();
 		this.pipeLogic = new PipeLogic();
+		this.score = bird.getScore();
 	}
 	
 	public void update() {
 		this.bird.update(pipeLogic.mostCloseToBird(this.bird));
 		this.pipeLogic.update();
+		this.score = bird.getScore();
 
 		if(!this.bird.isAlive()){
 			pipeLogic.resetPipes();
