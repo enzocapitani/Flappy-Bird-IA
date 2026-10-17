@@ -22,11 +22,11 @@ public class DefaultMap extends JPanel implements Runnable {
 		
 		gamelogic = new GameLogic();
 
-		this.scoreFont = LoadFile.loadFont("resources/font/YellowBanana.otf");
+		this.scoreFont = LoadFile.loadFont("resources/font/YellowBanana.otf", 24f);
 		
 		this.setBackground(Color.BLACK);
 		this.setFocusable(true);
-		this.addKeyListener(new BirdKeyListener(gamelogic.getBird()));
+		this.addKeyListener(new BirdKeyListener(gamelogic));
 		
 		gameThread = new Thread(this);
 		gameThread.start();
@@ -43,10 +43,12 @@ public class DefaultMap extends JPanel implements Runnable {
 	            delta += (now - lastTime) / frameTime;
 	            lastTime = now;
 
-	            if (delta >= 1) {   
-	            	
-	            	gamelogic.update();
-	            	
+	            if (delta >= 1) {
+
+	            	if(gamelogic.inGame()){
+	            		gamelogic.update();
+					}
+
 	                repaint();
 	                delta--;
 
@@ -59,11 +61,18 @@ public class DefaultMap extends JPanel implements Runnable {
 	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
-		
 		Graphics2D g2 = (Graphics2D) g;
-		gamelogic.paint(g2);
-		drawScore(g2);
 
+		if(gamelogic.inGame()){
+
+			gamelogic.paint(g2);
+			drawScore(g2);
+
+		}else{
+
+			gamelogic.paintGameOver(g2);
+
+		}
 	}
 
 	public void drawScore(Graphics2D g2){

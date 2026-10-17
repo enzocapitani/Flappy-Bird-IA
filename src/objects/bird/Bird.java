@@ -110,6 +110,7 @@ public class Bird implements ObjectInterface{
 		revive();
 		this.y = Bird.INITIAL_Y;
 		this.vel = INITIAL_VELOCITY;
+		this.score = 0;
 	}
 
 	public void update(Pipe pipe) {

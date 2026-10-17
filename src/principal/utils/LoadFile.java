@@ -6,11 +6,11 @@ import java.io.IOException;
 
 public class LoadFile {
 
-    public static Font loadFont(String path){
+    public static Font loadFont(String path, float size){
         try {
             File archive = new File(path);
 
-            return Font.createFont(Font.TRUETYPE_FONT, archive).deriveFont(24f);
+            return Font.createFont(Font.TRUETYPE_FONT, archive).deriveFont(size);
 
         } catch (FontFormatException | IOException e){
             e.printStackTrace();
