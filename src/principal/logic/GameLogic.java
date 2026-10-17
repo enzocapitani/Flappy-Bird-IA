@@ -8,16 +8,16 @@ import principal.utils.LoadFile;
 
 public class GameLogic {
 
-	private Font fontGameOver;
+	private final Font fontGameOver;
 
-	private Bird bird;
-	private PipeLogic pipeLogic;
+	private final Bird bird;
+	private final PipeLogic pipeLogic;
 
 	public int score;
 	
 	public GameLogic() {
-		bird = new Bird();
 		this.pipeLogic = new PipeLogic();
+		bird = new Bird(pipeLogic.mostCloseToBird(Bird.INITIAL_X));
 		this.score = bird.getScore();
 
 		fontGameOver = LoadFile.loadFont("resources/font/YellowBanana.otf", 102f);
@@ -25,15 +25,24 @@ public class GameLogic {
 	}
 	
 	public void update() {
-		this.bird.update(pipeLogic.mostCloseToBird(this.bird));
+		updateBird();
 		this.pipeLogic.update();
 		this.score = bird.getScore();
+	}
+
+	private void updateBird(){
+		bird.update();
+
+		if(bird.getPipe() == null){
+			bird.setPipe(pipeLogic.mostCloseToBird(bird.getX()));
+		}
+
 	}
 
 	public void resetGame(){
 		pipeLogic.resetPipes();
 		bird.resetBird();
-
+		bird.setPipe(pipeLogic.mostCloseToBird(bird.getX()));
 	}
 	
 	public void paint(Graphics2D g2) {

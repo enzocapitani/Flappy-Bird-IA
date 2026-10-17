@@ -47,12 +47,12 @@ public class PipeLogic {
         return dist;
     }
 
-    public Pipe mostCloseToBird(Bird bird){
+    public Pipe mostCloseToBird(int xBird){
         Pipe bestPipe = null;
         int bestDistance = Integer.MAX_VALUE;
         
         for(int i = 0; i < pipes.size(); i++){
-            int distance = distance(bird, pipes.get(i));
+            int distance = distance(xBird, pipes.get(i));
             
             if(distance > -Pipe.SIZE_X/2 && distance < bestDistance){
                 bestDistance = distance;
@@ -64,8 +64,8 @@ public class PipeLogic {
         return bestPipe;
     }
 
-    private int distance(Bird bird, Pipe pipe){
-        return pipe.getX() - bird.getX();
+    private int distance(int xBird, Pipe pipe){
+        return pipe.getX() - xBird;
     }
 
     public void update(){

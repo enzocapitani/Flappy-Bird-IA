@@ -25,7 +25,7 @@ public class Bird implements ObjectInterface{
 
 	// ====================== VARIABLES ======================
 
-	private Pipe actualPipe;
+	private Pipe pipe;
 
 	private int x, y, size,
 				vel, score;
@@ -34,7 +34,7 @@ public class Bird implements ObjectInterface{
 
 	// ====================== CONSTRUCTOR ======================
 	
-	public Bird() {
+	public Bird(Pipe pipe) {
  		this.x = Bird.INITIAL_X;
 		this.y = Bird.INITIAL_Y;
 		this.alive = true;
@@ -42,7 +42,7 @@ public class Bird implements ObjectInterface{
 		this.vel = INITIAL_VELOCITY;
 		this.score = 0;
 
-		this.actualPipe = null;
+		this.pipe = pipe;
 	}
 
 	// ======================== ACTIONS ========================
@@ -69,14 +69,7 @@ public class Bird implements ObjectInterface{
 		}
 	}
 
-	public void pipeCollision(Pipe pipe){
-		if(this.actualPipe == null){
-			actualPipe = pipe;
-		} else {
-			updateScore(pipe);
-			actualPipe = pipe;
-		}
-
+	public void pipeCollision(){
 		int xp = pipe.getX(),
 			yp1 = pipe.getY(), 
 			yp2 = pipe.getyB(), 
@@ -93,15 +86,10 @@ public class Bird implements ObjectInterface{
 		}
 	}
 
-	// ====================== UPDATE VIEW & ATTRIBUTES ====================== 
-
-	@Override 
-	public void update() {
-
-	}
+	// ====================== UPDATE VIEW & ATTRIBUTES ======================
 
 	private void updateScore(Pipe newPipe){
-		if(newPipe != actualPipe){
+		if(newPipe != pipe){
 			score++;
 		}
 	}
@@ -113,7 +101,8 @@ public class Bird implements ObjectInterface{
 		this.score = 0;
 	}
 
-	public void update(Pipe pipe) {
+	@Override
+	public void update() {
 		if(isAlive()){
 			this.vel += Bird.GRAVITY_FORCE;
 			
@@ -121,8 +110,13 @@ public class Bird implements ObjectInterface{
 			
 			this.y += vel/2;
 
+
 			borderCollision();
-			pipeCollision(pipe);
+			pipeCollision();
+
+			if(getPipe().getX() < -Pipe.SIZE_X/2){
+				this.pipe = null;
+			}
 		}
 	}
 	
@@ -149,12 +143,16 @@ public class Bird implements ObjectInterface{
 		return x;
 	}
 
-	public void setX(int x) {
-		this.x = x;
-	}
-
 	public int getScore() {
 		return score;
+	}
+
+	public Pipe getPipe(){
+		return this.pipe;
+	}
+
+	public void setPipe(Pipe pipe){
+		this.pipe = pipe;
 	}
 
 }
