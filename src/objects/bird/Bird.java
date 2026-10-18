@@ -2,10 +2,13 @@ package objects.bird;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 
 import objects.ObjectInterface;
 import objects.pipe.Pipe;
 import principal.GameConstants;
+import principal.utils.LoadFile;
+import principal.utils.SpriteColorizer;
 
 public class Bird implements ObjectInterface{
 
@@ -15,13 +18,17 @@ public class Bird implements ObjectInterface{
 
 	public static final int JUMP_FORCE = -20;
 
-	public static final int SIZE = (int)(GameConstants.WIDHT * 0.026);
+	public static final int SIZE = (int)(GameConstants.WIDHT * 0.04);
 
 	public static final int INITIAL_X = (int)(GameConstants.WIDHT * 0.25);
 
 	public static final int INITIAL_Y = (int)(GameConstants.HEIGHT * 0.4);
 
 	public static final int INITIAL_VELOCITY = -10;
+
+	public static final double MAX_ANGLE = Math.toRadians(90);
+
+	public static final double MIN_ANGLE = Math.toRadians(-30);
 
 	// ====================== VARIABLES ======================
 
@@ -32,6 +39,10 @@ public class Bird implements ObjectInterface{
 
 	private boolean alive;
 
+	private int angle;
+
+	private BufferedImage birdImage;
+
 	// ====================== CONSTRUCTOR ======================
 	
 	public Bird(Pipe pipe) {
@@ -41,6 +52,9 @@ public class Bird implements ObjectInterface{
 		this.size = Bird.SIZE;
 		this.vel = INITIAL_VELOCITY;
 		this.score = 0;
+
+		birdImage = LoadFile.loadImage("resources/sprites/bird/bird.png");
+		changeColorBird();
 
 		this.pipe = pipe;
 	}
@@ -124,9 +138,8 @@ public class Bird implements ObjectInterface{
 	public void paint(Graphics2D g) {
 		if(isAlive()){
 			Graphics2D bird = (Graphics2D) g.create();
-			
-			bird.setColor(Color.GREEN);   
-			bird.fillRect(x, y, size, size);
+
+			bird.drawImage(birdImage, x, y, size, (int)(size*0.8), null);
 			
 			bird.dispose();
 		}
@@ -153,6 +166,12 @@ public class Bird implements ObjectInterface{
 
 	public void setPipe(Pipe pipe){
 		this.pipe = pipe;
+	}
+
+	// ====================== IMAGE ======================
+
+	private void changeColorBird(){
+		this.birdImage = SpriteColorizer.randomColorizer(birdImage, Color.WHITE);
 	}
 
 }
