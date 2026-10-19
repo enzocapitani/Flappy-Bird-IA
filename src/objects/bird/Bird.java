@@ -18,9 +18,9 @@ public class Bird implements ObjectInterface{
 
 	public static final int JUMP_FORCE = -20;
 
-	public static final int SIZE = (int)(GameConstants.WIDHT * 0.04);
+	public static final int SIZE = (int)(GameConstants.WIDTH * 0.04);
 
-	public static final int INITIAL_X = (int)(GameConstants.WIDHT * 0.25);
+	public static final int INITIAL_X = (int)(GameConstants.WIDTH * 0.25);
 
 	public static final int INITIAL_Y = (int)(GameConstants.HEIGHT * 0.4);
 

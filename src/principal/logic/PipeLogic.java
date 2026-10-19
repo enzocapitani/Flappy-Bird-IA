@@ -27,7 +27,7 @@ public class PipeLogic {
 
     public void resetPipes(){
         for (int i = 0; i < pipes.size(); i++) {
-            this.pipes.get(i).realocate(GameConstants.WIDHT + i * Pipe.SPACING);
+            this.pipes.get(i).realocate(GameConstants.WIDTH + i * Pipe.SPACING);
         }
     }
 

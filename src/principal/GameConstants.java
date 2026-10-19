@@ -1,14 +1,31 @@
 package principal;
 
-import java.awt.Dimension;
+import java.awt.GraphicsEnvironment;
+import java.awt.GraphicsConfiguration;
+import java.awt.Rectangle;
+import java.awt.Insets;
 import java.awt.Toolkit;
 
 public class GameConstants {
 
-    private static Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize(); 
+    private static final GraphicsConfiguration CONFIG =
+            GraphicsEnvironment
+                    .getLocalGraphicsEnvironment()
+                    .getDefaultScreenDevice()
+                    .getDefaultConfiguration();
 
-    public static final int WIDHT = dimension.width;
-    public static final int HEIGHT = dimension.height;
-    public static final int AREA = WIDHT*HEIGHT;
+    private static final Rectangle BOUNDS =
+            CONFIG.getBounds();
 
+    private static final Insets INSETS =
+            Toolkit.getDefaultToolkit()
+                    .getScreenInsets(CONFIG);
+
+    public static final int WIDTH =
+            BOUNDS.width - INSETS.left - INSETS.right;
+
+    public static final int HEIGHT =
+            BOUNDS.height - INSETS.top - INSETS.bottom;
+
+    public static final int AREA = WIDTH * HEIGHT;
 }

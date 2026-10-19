@@ -53,7 +53,7 @@ public class GameLogic {
 	public void paintGameOver(Graphics2D g2){
 		g2.setColor(Color.RED);
 		g2.setFont(fontGameOver);
-		g2.drawString("GAME OVER", (float)(GameConstants.WIDHT/2) - 102f * 3, (float)GameConstants.HEIGHT/2);
+		g2.drawString("GAME OVER", (float)(GameConstants.WIDTH/2) - 102f * 3, (float)GameConstants.HEIGHT/2);
 	}
 	
 	public Bird getBird() {
