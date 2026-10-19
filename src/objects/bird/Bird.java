@@ -85,6 +85,7 @@ public class Bird implements ObjectInterface{
 		}
 	}
 
+	// Verify if the bird overlaps the Pipe on the frame
 	public void pipeCollision(){
 		int xp = pipe.getX(),
 			yp1 = pipe.getY(), 
@@ -104,10 +105,9 @@ public class Bird implements ObjectInterface{
 
 	// ====================== UPDATE VIEW & ATTRIBUTES ======================
 
-	private void updateScore(Pipe newPipe){
-		if(newPipe != pipe){
-			score++;
-		}
+	// Update the score
+	public void updateScore(){
+		score++;
 	}
 
 	private void updateAngle(){
@@ -141,7 +141,7 @@ public class Bird implements ObjectInterface{
 			borderCollision();
 			pipeCollision();
 
-			if(getPipe().getX() < -Pipe.SIZE_X/2){
+			if(getPipe().getX() - this.getX() < -Pipe.SIZE_X/2){
 				this.pipe = null;
 			}
 		}

@@ -35,6 +35,7 @@ public class GameLogic {
 
 		if(bird.getPipe() == null){
 			bird.setPipe(pipeLogic.mostCloseToBird(bird.getX()));
+			bird.updateScore();
 		}
 
 	}
