@@ -9,6 +9,7 @@ import objects.pipe.Pipe;
 import principal.GameConstants;
 import principal.utils.LoadFile;
 import principal.utils.SpriteColorizer;
+import scenes.FloorParallax;
 
 public class Bird implements ObjectInterface{
 
@@ -79,7 +80,7 @@ public class Bird implements ObjectInterface{
 
 	public void borderCollision(){
 		if(this.y <= 0 ||
-			this.y + this.size >= GameConstants.HEIGHT
+			this.y + this.size/2 >= FloorParallax.POSITION_Y
 		){
 			die();
 		}
@@ -155,7 +156,7 @@ public class Bird implements ObjectInterface{
 			int imageHeight = (int) (size * 0.8);
 
 			double centerX = x + size / 2.0;
-			double centerY = y + imageHeight / 2.0;
+			double centerY = y + (size*0.8) / 2.0;
 
 			bird.rotate(angle, centerX, centerY);
 
