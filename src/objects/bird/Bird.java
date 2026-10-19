@@ -26,9 +26,11 @@ public class Bird implements ObjectInterface{
 
 	public static final int INITIAL_VELOCITY = -10;
 
-	public static final double MAX_ANGLE = Math.toRadians(90);
+	private static final double MAX_ANGLE = Math.toRadians(90);
+	private static final double MIN_ANGLE = Math.toRadians(-25);
 
-	public static final double MIN_ANGLE = Math.toRadians(-30);
+	private static final double ROTATION_SMOOTHING = 0.12;
+
 
 	// ====================== VARIABLES ======================
 
@@ -39,7 +41,7 @@ public class Bird implements ObjectInterface{
 
 	private boolean alive;
 
-	private int angle;
+	private double angle;
 
 	private BufferedImage birdImage;
 
@@ -108,6 +110,16 @@ public class Bird implements ObjectInterface{
 		}
 	}
 
+	private void updateAngle(){
+		double targetAngle = Math.atan(vel * 0.10);
+
+		targetAngle = Math.clamp(targetAngle,
+                MIN_ANGLE, MAX_ANGLE); 
+
+		angle += (targetAngle - angle) * ROTATION_SMOOTHING;
+
+	}
+
 	public void resetBird(){
 		revive();
 		this.y = Bird.INITIAL_Y;
@@ -124,6 +136,7 @@ public class Bird implements ObjectInterface{
 			
 			this.y += vel/2;
 
+			updateAngle();
 
 			borderCollision();
 			pipeCollision();
@@ -138,6 +151,13 @@ public class Bird implements ObjectInterface{
 	public void paint(Graphics2D g) {
 		if(isAlive()){
 			Graphics2D bird = (Graphics2D) g.create();
+
+			int imageHeight = (int) (size * 0.8);
+
+			double centerX = x + size / 2.0;
+			double centerY = y + imageHeight / 2.0;
+
+			bird.rotate(angle, centerX, centerY);
 
 			bird.drawImage(birdImage, x, y, size, (int)(size*0.8), null);
 			
