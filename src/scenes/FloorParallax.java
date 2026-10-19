@@ -12,6 +12,8 @@ public class FloorParallax {
     public static int SIZE_X_FLOOR = 600;
     public static int SIZE_Y_FLOOR = 128;
 
+    public static int POSITION_Y = GameConstants.HEIGHT - SIZE_Y_FLOOR - 21;
+
     private Component[] floors;
 
     public FloorParallax(){
@@ -31,7 +33,7 @@ public class FloorParallax {
 
         for(int i = 0; i < floors.length; i++){
             floors[i] = new Component(sprites[i % sprites.length],
-                    i * SIZE_X_FLOOR, GameConstants.HEIGHT - SIZE_Y_FLOOR - 24, SIZE_X_FLOOR, SIZE_Y_FLOOR);
+                    i * SIZE_X_FLOOR, POSITION_Y, SIZE_X_FLOOR, SIZE_Y_FLOOR);
         }
 
     }
