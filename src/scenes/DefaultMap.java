@@ -14,6 +14,8 @@ public class DefaultMap extends JPanel implements Runnable {
 
 	private final int FPS = 60;
 	private final Thread gameThread;
+
+	private final FloorParallax floor;
 	
 	GameLogic gamelogic;
 	
@@ -27,6 +29,8 @@ public class DefaultMap extends JPanel implements Runnable {
 		this.setBackground(Color.BLACK);
 		this.setFocusable(true);
 		this.addKeyListener(new BirdKeyListener(gamelogic));
+
+		this.floor = new FloorParallax();
 		
 		gameThread = new Thread(this);
 		gameThread.start();
@@ -47,6 +51,7 @@ public class DefaultMap extends JPanel implements Runnable {
 
 	            	if(gamelogic.inGame()){
 	            		gamelogic.update();
+						floor.update();
 					}
 
 	                repaint();
@@ -66,6 +71,7 @@ public class DefaultMap extends JPanel implements Runnable {
 		if(gamelogic.inGame()){
 
 			gamelogic.paint(g2);
+			floor.drawFloor(g2);
 			drawScore(g2);
 
 		}else{

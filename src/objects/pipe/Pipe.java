@@ -15,7 +15,7 @@ public class Pipe implements ObjectInterface {
 
     public static final double SIZE_Y = GameConstants.HEIGHT * 0.7;
 
-    public static final double GAP = GameConstants.HEIGHT * 0.21;
+    public static final double GAP = GameConstants.HEIGHT * 0.23;
 
     public static final int VELOCITY = 3;
     
