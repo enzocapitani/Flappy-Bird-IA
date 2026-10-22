@@ -23,9 +23,6 @@ public class GameLogic {
 
 		fontGameOver = LoadFile.loadFont("resources/font/YellowBanana.otf", 102f);
 
-		System.out.println("X: "+Pipe.SIZE_X);
-		System.out.println("Y: "+Pipe.SIZE_Y);
-
 	}
 	
 	public void update() {
