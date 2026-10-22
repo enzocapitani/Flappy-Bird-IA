@@ -9,19 +9,20 @@ import java.awt.image.BufferedImage;
 public class Component implements ObjectInterface {
 
     private BufferedImage image;
-    private int x, y, sizex, sizey;
+    private int x, y, sizex, sizey, velocity;
 
-    public Component(BufferedImage img, int x, int y, int sizex, int sizey){
+    public Component(BufferedImage img, int x, int y, int sizex, int sizey, int velocity){
         this.image = img;
         this.x = x;
         this.y = y;
         this.sizex = sizex;
         this.sizey = sizey;
+        this.velocity = velocity;
     }
 
     @Override
     public void update() {
-        this.x -= Pipe.VELOCITY;
+        this.x -= velocity;
     }
 
     @Override
