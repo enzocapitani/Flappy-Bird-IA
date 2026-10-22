@@ -78,6 +78,7 @@ public class DefaultMap extends JPanel implements Runnable {
 			backgorund.draw(g2);
 			gamelogic.paint(g2);
 			floor.draw(g2);
+			gamelogic.paintBird(g2);
 			drawScore(g2);
 
 		}else{

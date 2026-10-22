@@ -6,11 +6,15 @@ import principal.utils.LoadFile;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
+import objects.pipe.Pipe;
+
 public class FloorParallax {
 
     // Both are twice of the original sprite dimensions
     public static int SIZE_X_FLOOR = 600;
     public static int SIZE_Y_FLOOR = 128;
+
+    public static int POSITION_Y =  GameConstants.HEIGHT - SIZE_Y_FLOOR - 24;
 
     private Component[] floors;
 
@@ -31,7 +35,7 @@ public class FloorParallax {
 
         for(int i = 0; i < floors.length; i++){
             floors[i] = new Component(sprites[i % sprites.length],
-                    i * SIZE_X_FLOOR, GameConstants.HEIGHT - SIZE_Y_FLOOR - 24, SIZE_X_FLOOR, SIZE_Y_FLOOR);
+                    i * SIZE_X_FLOOR, GameConstants.HEIGHT - SIZE_Y_FLOOR - 24, SIZE_X_FLOOR, SIZE_Y_FLOOR, Pipe.VELOCITY);
         }
 
     }
