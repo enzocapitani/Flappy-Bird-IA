@@ -111,7 +111,7 @@ public class Bird implements ObjectInterface{
 	}
 
 	private void updateAngle(){
-		double targetAngle = Math.atan(vel * 0.10);
+		double targetAngle = Math.atan(vel * 0.05);
 
 		targetAngle = Math.clamp(targetAngle,
                 MIN_ANGLE, MAX_ANGLE); 
