@@ -3,6 +3,7 @@ package principal.logic;
 import java.awt.*;
 
 import objects.bird.Bird;
+import objects.pipe.Pipe;
 import principal.GameConstants;
 import principal.utils.LoadFile;
 
@@ -21,6 +22,9 @@ public class GameLogic {
 		this.score = bird.getScore();
 
 		fontGameOver = LoadFile.loadFont("resources/font/YellowBanana.otf", 102f);
+
+		System.out.println("X: "+Pipe.SIZE_X);
+		System.out.println("Y: "+Pipe.SIZE_Y);
 
 	}
 	

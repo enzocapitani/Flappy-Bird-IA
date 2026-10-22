@@ -2,16 +2,18 @@ package objects.pipe;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
 import java.util.Random;
 
 import objects.ObjectInterface;
 import principal.GameConstants;
+import principal.utils.LoadFile;
 
 public class Pipe implements ObjectInterface {
 
     public static final Random RAND = new Random();
 
-    public static final int SIZE_X = 50;
+    public static final int SIZE_X = 75;
 
     public static final double SIZE_Y = GameConstants.HEIGHT * 0.7;
 
@@ -22,6 +24,8 @@ public class Pipe implements ObjectInterface {
     public static final double BORDER_DISTANCE = GameConstants.HEIGHT * 0.04;
     
     public static final int SPACING = (int)(GameConstants.WIDTH * 0.3) + SIZE_X;
+
+    public final BufferedImage image;
 
     private int x, y, sizeX, sizeY,
 				vel;
@@ -39,6 +43,8 @@ public class Pipe implements ObjectInterface {
         this.yB = y - gap - sizeY;
 
 		this.vel = Pipe.VELOCITY;
+
+        image = LoadFile.loadImage("resources/sprites/cenario/cano.png");
     }
 
     public void move(){
@@ -58,9 +64,15 @@ public class Pipe implements ObjectInterface {
 
     @Override
     public void paint(Graphics2D g2) {
-        g2.setColor(Color.MAGENTA);
-        g2.fillRect(x, y, sizeX, sizeY);
-        g2.fillRect(x, yB, sizeX, sizeY);
+        Graphics2D pipeG2 = (Graphics2D) g2.create();
+        pipeG2.drawImage(image, x, y, sizeX, sizeY, null);
+
+        pipeG2.translate(x, yB + sizeY);
+        pipeG2.scale(1, -1);
+        pipeG2.drawImage(image, 0, 0, sizeX, sizeY, null);
+
+        pipeG2.dispose();
+
     }
 
     public int getY() {
