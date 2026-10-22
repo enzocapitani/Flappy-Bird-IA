@@ -9,6 +9,7 @@ import objects.pipe.Pipe;
 import principal.GameConstants;
 import principal.utils.LoadFile;
 import principal.utils.SpriteColorizer;
+import scenes.FloorParallax;
 
 public class Bird implements ObjectInterface{
 
@@ -79,12 +80,13 @@ public class Bird implements ObjectInterface{
 
 	public void borderCollision(){
 		if(this.y <= 0 ||
-			this.y + this.size >= GameConstants.HEIGHT
+			this.y + this.size/2 >= FloorParallax.POSITION_Y
 		){
 			die();
 		}
 	}
 
+	// Verify if the bird overlaps the Pipe on the frame
 	public void pipeCollision(){
 		int xp = pipe.getX(),
 			yp1 = pipe.getY(), 
@@ -104,10 +106,9 @@ public class Bird implements ObjectInterface{
 
 	// ====================== UPDATE VIEW & ATTRIBUTES ======================
 
-	private void updateScore(Pipe newPipe){
-		if(newPipe != pipe){
-			score++;
-		}
+	// Update the score
+	public void updateScore(){
+		score++;
 	}
 
 	private void updateAngle(){
@@ -141,7 +142,7 @@ public class Bird implements ObjectInterface{
 			borderCollision();
 			pipeCollision();
 
-			if(getPipe().getX() < -Pipe.SIZE_X/2){
+			if(getPipe().getX() - this.getX() < -Pipe.SIZE_X/2){
 				this.pipe = null;
 			}
 		}
@@ -155,7 +156,7 @@ public class Bird implements ObjectInterface{
 			int imageHeight = (int) (size * 0.8);
 
 			double centerX = x + size / 2.0;
-			double centerY = y + imageHeight / 2.0;
+			double centerY = y + (size*0.8) / 2.0;
 
 			bird.rotate(angle, centerX, centerY);
 
