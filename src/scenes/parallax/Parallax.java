@@ -1,8 +1,5 @@
 package scenes.parallax;
 
-import principal.GameConstants;
-import scenes.Component;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 

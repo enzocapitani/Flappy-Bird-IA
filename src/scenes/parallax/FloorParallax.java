@@ -3,9 +3,7 @@ package scenes.parallax;
 import objects.pipe.Pipe;
 import principal.GameConstants;
 import principal.utils.LoadFile;
-import scenes.Component;
 
-import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class FloorParallax extends Parallax{
@@ -13,6 +11,8 @@ public class FloorParallax extends Parallax{
     // Both are twice of the original sprite dimensions
     public static int SIZE_X_FLOOR = 600;
     public static int SIZE_Y_FLOOR = 128;
+
+    public static int POSITION_Y = GameConstants.HEIGHT - SIZE_Y_FLOOR - 24;
 
     public FloorParallax(){
         addImages();
@@ -34,7 +34,7 @@ public class FloorParallax extends Parallax{
 
         for(int i = 0; i < components.length; i++){
             components[i] = new Component(sprites[i % sprites.length],
-                    i * SIZE_X_FLOOR, GameConstants.HEIGHT - SIZE_Y_FLOOR - 24, SIZE_X_FLOOR, SIZE_Y_FLOOR, Pipe.VELOCITY);
+                    i * SIZE_X_FLOOR, POSITION_Y, SIZE_X_FLOOR, SIZE_Y_FLOOR, Pipe.VELOCITY);
         }
 
     }

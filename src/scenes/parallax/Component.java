@@ -1,7 +1,6 @@
-package scenes;
+package scenes.parallax;
 
 import objects.ObjectInterface;
-import objects.pipe.Pipe;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;

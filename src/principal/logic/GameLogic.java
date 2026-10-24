@@ -41,6 +41,10 @@ public class GameLogic {
 
 	}
 
+	public void jumpBird(){
+		bird.jump();
+	}
+
 	public void resetGame(){
 		pipeLogic.resetPipes();
 		bird.resetBird();

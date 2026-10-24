@@ -9,7 +9,7 @@ import objects.pipe.Pipe;
 import principal.GameConstants;
 import principal.utils.LoadFile;
 import principal.utils.SpriteColorizer;
-import scenes.FloorParallax;
+import scenes.parallax.FloorParallax;
 
 public class Bird implements ObjectInterface{
 
