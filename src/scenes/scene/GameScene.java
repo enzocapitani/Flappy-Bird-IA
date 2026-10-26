@@ -2,8 +2,8 @@ package scenes.scene;
 
 import principal.logic.GameLogic;
 import principal.utils.LoadFile;
-import scenes.parallax.BackGroundParallax;
-import scenes.parallax.FloorParallax;
+import scenes.parallax.background.BackGroundParallax;
+import scenes.parallax.floor.FloorParallax;
 import scenes.parallax.Parallax;
 
 import java.awt.*;
@@ -16,10 +16,14 @@ public class GameScene implements Scene {
 
     GameLogic gameLogic;
 
-    public GameScene(){
+    SceneManager sceneManager;
+
+    public GameScene(SceneManager sceneManager){
         floor = new FloorParallax();
         background = new BackGroundParallax();
         scoreFont = LoadFile.loadFont("resources/font/YellowBanana.otf", 24f);
+
+        this.sceneManager = sceneManager;
 
         gameLogic = new GameLogic();
     }
@@ -51,6 +55,7 @@ public class GameScene implements Scene {
     }
 
     private void paintScenario(Graphics2D g2){
+        birdAlive();
         background.draw(g2);
         gameLogic.paint(g2);
         floor.draw(g2);
@@ -73,8 +78,8 @@ public class GameScene implements Scene {
         }
     }
 
-    public boolean birdAlive(){
-        return gameLogic.inGame();
+    public void birdAlive(){
+        if(!gameLogic.inGame()) sceneManager.change(new GameOverScene(sceneManager));
     }
 
 }

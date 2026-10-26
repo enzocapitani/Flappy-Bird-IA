@@ -8,10 +8,13 @@ import java.awt.event.KeyEvent;
 
 public class GameOverScene implements Scene {
 
-    private Font bananaFont;
+    private final Font bananaFont;
 
-    public GameOverScene(){
+    SceneManager sceneManager;
+
+    public GameOverScene(SceneManager sceneManager){
         this.bananaFont = LoadFile.loadFont("resources/font/YellowBanana.otf", 78f);
+        this.sceneManager = sceneManager;
     }
 
     @Override
@@ -38,5 +41,6 @@ public class GameOverScene implements Scene {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        if(e.getKeyCode() == KeyEvent.VK_R) sceneManager.change(new GameScene(sceneManager));
     }
 }

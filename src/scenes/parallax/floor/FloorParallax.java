@@ -1,12 +1,14 @@
-package scenes.parallax;
+package scenes.parallax.floor;
 
 import objects.pipe.Pipe;
 import principal.GameConstants;
 import principal.utils.LoadFile;
+import scenes.parallax.Component;
+import scenes.parallax.Parallax;
 
 import java.awt.image.BufferedImage;
 
-public class FloorParallax extends Parallax{
+public class FloorParallax extends Parallax {
 
     // Both are twice of the original sprite dimensions
     public static int SIZE_X_FLOOR = 600;
@@ -22,12 +24,8 @@ public class FloorParallax extends Parallax{
 
     @Override
     public void addImages(){
-        BufferedImage img1 = LoadFile.loadImage("resources/sprites/cenario/chao.png"),
-                img2 = LoadFile.loadImage("resources/sprites/cenario/chaoArbusto.png"),
-                img3 = LoadFile.loadImage("resources/sprites/cenario/chaoNada.png");
-
         BufferedImage[] sprites = {
-                img1, img2, img3
+                FloorAssets.img1, FloorAssets.img2, FloorAssets.img3
         };
 
         this.components = new Component[sprites.length * 2];

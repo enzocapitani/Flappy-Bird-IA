@@ -7,9 +7,8 @@ import java.awt.image.BufferedImage;
 import objects.ObjectInterface;
 import objects.pipe.Pipe;
 import principal.GameConstants;
-import principal.utils.LoadFile;
 import principal.utils.SpriteColorizer;
-import scenes.parallax.FloorParallax;
+import scenes.parallax.floor.FloorParallax;
 
 public class Bird implements ObjectInterface{
 
@@ -56,7 +55,7 @@ public class Bird implements ObjectInterface{
 		this.vel = INITIAL_VELOCITY;
 		this.score = 0;
 
-		birdImage = LoadFile.loadImage("resources/sprites/bird/bird.png");
+		birdImage = BirdAssets.birdImage;
 		changeColorBird();
 
 		this.pipe = pipe;

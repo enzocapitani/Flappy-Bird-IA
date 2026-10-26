@@ -1,20 +1,21 @@
-package scenes.parallax;
+package scenes.parallax.background;
 
 import principal.GameConstants;
 import principal.utils.LoadFile;
+import scenes.parallax.Parallax;
 
 import java.awt.image.BufferedImage;
 
-public class BackGroundParallax extends Parallax{
+public class BackGroundParallax extends Parallax {
 
     public static int SIZE_X_BACKGROUND = GameConstants.WIDTH;
     public static int SIZE_Y_BACKGROUND = GameConstants.HEIGHT;
 
     public BackGroundParallax(){
         BufferedImage[] sprites = {
-                LoadFile.loadImage("resources/sprites/cenario/background3.png"),
-                LoadFile.loadImage("resources/sprites/cenario/background2.png"),
-                LoadFile.loadImage("resources/sprites/cenario/background1.png")
+                BackGroundAssets.image1,
+                BackGroundAssets.image2,
+                BackGroundAssets.image3
         };
 
         this.sizeXComponemt = SIZE_X_BACKGROUND;

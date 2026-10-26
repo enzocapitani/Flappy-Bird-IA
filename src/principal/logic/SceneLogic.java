@@ -15,14 +15,15 @@ public class SceneLogic {
     GameOverScene gameOverScene;
 
     public SceneLogic(){
-        gameScene = new GameScene();
-        gameOverScene = new GameOverScene();
-
         sceneManager = new SceneManager();
+
+        gameScene = new GameScene(sceneManager);
+        gameOverScene = new GameOverScene(sceneManager);
+
+        sceneManager.change(gameScene);
     }
 
     public void update(){
-        inGame();
         sceneManager.update();
     }
 
@@ -32,10 +33,6 @@ public class SceneLogic {
 
     public void keyPressed(KeyEvent e){
         sceneManager.keyPressed(e);
-    }
-
-    private void inGame(){
-        if(!gameScene.birdAlive()) sceneManager.change(gameOverScene);
     }
 
 }
