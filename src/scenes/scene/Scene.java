@@ -1,4 +1,4 @@
-package scenes;
+package scenes.scene;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;

@@ -2,8 +2,10 @@ package principal;
 
 import input.GameKeyListener;
 import principal.logic.GameLogic;
-import scenes.GameScene;
-import scenes.SceneManager;
+import principal.logic.SceneLogic;
+import scenes.scene.GameOverScene;
+import scenes.scene.GameScene;
+import scenes.scene.SceneManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,18 +20,18 @@ public class GamePanel extends JPanel implements Runnable {
 
     GameLogic gamelogic;
 
-    SceneManager sceneManager;
+    SceneLogic sceneLogic;
 
     public GamePanel(){
         super();
 
         gamelogic = new GameLogic();
 
-        sceneManager = new SceneManager(new GameScene());
+        sceneLogic = new SceneLogic();
 
         this.setBackground(Color.BLACK);
         this.setFocusable(true);
-        this.addKeyListener(new GameKeyListener(sceneManager));
+        this.addKeyListener(new GameKeyListener(sceneLogic));
 
         gameThread = new Thread(this);
         gameThread.start();
@@ -48,7 +50,7 @@ public class GamePanel extends JPanel implements Runnable {
 
             if (delta >= 1) {
 
-                sceneManager.update();
+                sceneLogic.update();
 
                 repaint();
                 delta--;
@@ -63,9 +65,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D) g;
-        sceneManager.paint(g2);
+        sceneLogic.paint(g2);
 
     }
-
-
 }

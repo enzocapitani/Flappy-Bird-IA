@@ -1,4 +1,4 @@
-package scenes;
+package scenes.scene;
 
 import principal.logic.GameLogic;
 import principal.utils.LoadFile;
@@ -73,5 +73,8 @@ public class GameScene implements Scene {
         }
     }
 
+    public boolean birdAlive(){
+        return gameLogic.inGame();
+    }
 
 }

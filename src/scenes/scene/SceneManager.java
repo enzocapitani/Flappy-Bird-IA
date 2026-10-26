@@ -1,4 +1,4 @@
-package scenes;
+package scenes.scene;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -8,8 +8,8 @@ public class SceneManager {
     private Scene current;
     private Scene pending;
 
-    public SceneManager(Scene scene){
-        this.current = scene;
+    public SceneManager(){
+
     }
 
     public void change(Scene next){

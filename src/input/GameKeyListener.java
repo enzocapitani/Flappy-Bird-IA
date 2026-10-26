@@ -1,18 +1,18 @@
 package input;
 
-import scenes.SceneManager;
+import principal.logic.SceneLogic;
+import scenes.scene.SceneManager;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class GameKeyListener implements KeyListener {
 
-    SceneManager sceneManager;
+    SceneLogic sceneLogic;
 
-    public GameKeyListener(SceneManager sceneManager){
-      this.sceneManager = sceneManager;
+    public GameKeyListener(SceneLogic sceneLogic) {
+        this.sceneLogic = sceneLogic;
     }
-
     @Override
     public void keyTyped(KeyEvent e) {
 
@@ -20,7 +20,7 @@ public class GameKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        sceneManager.keyPressed(e);
+        sceneLogic.keyPressed(e);
     }
 
     @Override
