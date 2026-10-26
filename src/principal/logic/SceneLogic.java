@@ -1,9 +1,6 @@
 package principal.logic;
 
-import scenes.scene.GameOverScene;
-import scenes.scene.GameScene;
-import scenes.scene.Scene;
-import scenes.scene.SceneManager;
+import scenes.scene.*;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -13,14 +10,16 @@ public class SceneLogic {
 
     GameScene gameScene;
     GameOverScene gameOverScene;
+    MenuScene menuScene;
 
     public SceneLogic(){
         sceneManager = new SceneManager();
 
         gameScene = new GameScene(sceneManager);
         gameOverScene = new GameOverScene(sceneManager);
+        menuScene = new MenuScene(sceneManager);
 
-        sceneManager.change(gameScene);
+        sceneManager.change(menuScene);
     }
 
     public void update(){
