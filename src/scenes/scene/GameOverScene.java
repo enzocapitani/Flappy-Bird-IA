@@ -2,6 +2,7 @@ package scenes.scene;
 
 import principal.GameConstants;
 import principal.utils.LoadFile;
+import scenes.OptionMenu;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -12,9 +13,15 @@ public class GameOverScene implements Scene {
 
     SceneManager sceneManager;
 
+    OptionMenu optionMenu;
+
     public GameOverScene(SceneManager sceneManager){
+        String[] options = {"Restart", "Menu"};
+
         this.bananaFont = LoadFile.loadFont("resources/font/YellowBanana.otf", 78f);
         this.sceneManager = sceneManager;
+
+        optionMenu = new OptionMenu(options, GameConstants.WIDTH/2 - 64, GameConstants.HEIGHT/2 + 70);
     }
 
     @Override
@@ -37,10 +44,20 @@ public class GameOverScene implements Scene {
         g.setColor(Color.RED);
         g.setFont(bananaFont);
         g.drawString("GAME OVER", GameConstants.WIDTH/2 - 256, GameConstants.HEIGHT/2);
+        optionMenu.paint(g);
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_R) sceneManager.change(new GameScene(sceneManager));
+        optionMenu.keyPressed(e);
+
+        if(e.getKeyCode() == KeyEvent.VK_ENTER) verifyOptionSelected(optionMenu.getPointerIndex());
+    }
+
+    private void verifyOptionSelected(int selected){
+        switch (selected){
+            case 0 -> sceneManager.change(new GameScene(sceneManager));
+            case 1 -> sceneManager.change(new MenuScene(sceneManager));
+        }
     }
 }
