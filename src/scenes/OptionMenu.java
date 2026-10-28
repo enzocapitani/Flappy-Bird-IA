@@ -9,6 +9,8 @@ public class OptionMenu {
 
     private Font bananaFont;
 
+    private Color color;
+
     private String[] options;
 
     private Pointer pointer;
@@ -33,7 +35,7 @@ public class OptionMenu {
 
     public void paint(Graphics2D g){
         g.setFont(bananaFont);
-        g.setColor(Color.MAGENTA);
+        g.setColor(color);
         for(int i = 0; i < options.length; i++) g.drawString(options[i], x, y + i*30);
         pointer.paint(g);
     }
@@ -50,5 +52,10 @@ public class OptionMenu {
     public int getPointerIndex(){
         return pointer.getIndex();
     }
+
+    public void setColor(Color color){
+        this.color = color;
+    }
+
 
 }
